@@ -4,6 +4,8 @@ This is a repository for TeamFireball 4p02 at Brock U
 
 Check out the blog here: [Team 4p02 Blog](https://teamfireball4p02.blogspot.com/)
 
+Check out the live demo here: [live demo](https://teamfb20210212144602.azurewebsites.net/)
+
 ## Small Business Management Application
 
 ### Team Members:

@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    
     padding-bottom: 20px;
 }
 .body-content {
@@ -15,6 +15,16 @@ textarea {
     max-width: 280px;
 }
 
+/*Header*/
+.header {
+    padding: 20px;
+    text-align: center;
+    background: #3d59ab;
+    color: white;
+    font-size: 30px;
+}
+
+/*Navbar code*/
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -33,6 +43,7 @@ textarea {
     left: 250px;
     width: 0;
     height: 100%;
+    background: #999999;
     margin-left: -250px;
     overflow-y: auto;
     -webkit-transition: all 0.5s ease;
@@ -67,19 +78,20 @@ textarea {
 }
 
 .sidebar-nav li {
-    text-indent: 20px;
+    /*text-indent: 20px;*/
     line-height: 40px;
+    text-align: center;
 }
 
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: #f5f5f5;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
+    color: #f5f5f5;
     background: rgba(255,255,255,0.2);
 }
 
@@ -95,11 +107,11 @@ textarea {
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color: #999999;
+    color: #f5f5f5;
     }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
+    color: #f5f5f5;
     background: none;
 }
 
@@ -129,4 +141,6 @@ textarea {
         position: relative;
         margin-right: 0;
     }
+    /*End of navbar code*/
+
 }

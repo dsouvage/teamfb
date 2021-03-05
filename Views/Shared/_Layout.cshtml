@@ -3,63 +3,60 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Fireball</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <div class="header">
-        <h1>Fireball</h1>
-        <p>Small Business Management</p>
-    </div>
+    <script src="https://kit.fontawesome.com/fe267861ed.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="#">Clientele</a>
-                </li>
-                <li>
-                    <a href="#">Finances</a>
-                </li>
-                <li>
-                    <a href="#">Statistics</a>
-                </li>
-                <li>
-                    <a href="#">Products</a>
-                </li>
-                <li>
-                    <a href="#">Orders and Fulfillment</a>
-                </li>
-                <li>
-                    <a href="#">Documents</a>
-                </li>
-                <li>
-                    <a href="#">Employees</a>
-                </li>
-
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li href="#menu-toggle" id="menu-toggle" class="clicky"><a><i class="fas fa-bars"></i></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a><i class="fas fa-user-cog clicky"></i></a></li>
+                <li><a><i class="fas fa-question-circle clicky"></i></a></li>
             </ul>
         </div>
-        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-        <!-- /#page-content-wrapper -->
-        <div class="container body-content">
-
+    </div>
+</div>
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper" class="navbar-inverse">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Fireball
+                </a>
+            </li>
+            <li><a href="@Url.Action("Index", "Home")"><i class="fas fa-th-large"></i>&ensp;&ensp;Dashboard</a></li>
+            <li><a href="@Url.Action("About", "Home")"><i class="fas fa-user-friends"></i>&ensp;&ensp;Clientele</a></li>
+            <li><a href="@Url.Action("Contact", "Home")"><i class="fas fa-dollar-sign"></i>&ensp;&ensp;Finances</a></li>
+            <li><a href="@Url.Action("Contact", "Home")"><i class="fas fa-book"></i>&ensp;&ensp;Statistics</a></li>
+            <li><a href="@Url.Action("Contact", "Home")"><i class="fas fa-box-open"></i>&ensp;&ensp;Products</a></li>
+            <li><a href="@Url.Action("Contact", "Home")"><i class="fas fa-dolly"></i>&ensp;&ensp;Orders and Fulfillment</a></li>
+            <li><a href="@Url.Action("Contact", "Home")"><i class="fas fa-file-upload"></i>&ensp;&ensp;Documents</a></li>
+            <li><a href="@Url.Action("Contact", "Home")"><i class="fas fa-user-tie"></i>&ensp;&ensp;Employees</a></li>
+        </ul>
+    </div>
+    <!-- /#page-content-wrapper -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
             @RenderBody()
             <hr />
             <footer>
                 <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
             </footer>
+        
         </div>
     </div>
+</div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/js")
-    @RenderSection("scripts", required: false)
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/js")
+@RenderSection("scripts", required: false)
 </body>
 </html>

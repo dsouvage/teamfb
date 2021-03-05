@@ -1,5 +1,5 @@
 ﻿body {
-    
+    padding-top: 50px;
     padding-bottom: 20px;
 }
 .body-content {
@@ -15,12 +15,16 @@ textarea {
     max-width: 280px;
 }
 
+.clicky {
+    cursor: pointer;
+}
+
 /*Header*/
 .header {
     padding: 20px;
     text-align: center;
     background: #3d59ab;
-    color: white;
+    color: black;
     font-size: 30px;
 }
 
@@ -38,12 +42,15 @@ textarea {
 }
 
 #sidebar-wrapper {
-    z-index: 1000;
+    border-color: #080808;
+    border-style: solid;
+    border-width: 0 1px 0 0;
+    top: 0;
+    z-index: 2000;
     position: fixed;
     left: 250px;
     width: 0;
     height: 100%;
-    background: #999999;
     margin-left: -250px;
     overflow-y: auto;
     -webkit-transition: all 0.5s ease;
@@ -84,14 +91,15 @@ textarea {
 }
 
 .sidebar-nav li a {
+    padding: 5px 0 5px 20px;
     display: block;
     text-decoration: none;
-    color: #f5f5f5;
+    color: black;
+    text-align: left;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #f5f5f5;
     background: rgba(255,255,255,0.2);
 }
 
@@ -101,18 +109,40 @@ textarea {
 }
 
 .sidebar-nav > .sidebar-brand {
-    height: 65px;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: #080808;
+    height: 50px;
     font-size: 18px;
     line-height: 60px;
+    background: #3d59ab;
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color: #f5f5f5;
-    }
+    text-align: center;
+    vertical-align: middle;
+    color: WHITE;
+    font-weight: bold;
+}
 
 .sidebar-nav > .sidebar-brand a:hover {
     color: #f5f5f5;
     background: none;
+}
+
+.navbar-inverse {
+    background: #E0E0E0
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: black;
+}
+.container {
+    margin-right: 20px;
+}
+
+.navbar-fixed-top {
+    background: #3d59ab !important;
 }
 
 @media(min-width:768px) {
@@ -142,5 +172,4 @@ textarea {
         margin-right: 0;
     }
     /*End of navbar code*/
-
 }

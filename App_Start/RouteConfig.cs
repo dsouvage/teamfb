@@ -18,6 +18,11 @@ namespace teamfb
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "LoginRoute",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "UserAccount", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

@@ -18,5 +18,6 @@ namespace teamfb.Models
         public MyDatabaseContext() : base("name=MyDbConnection")
         {
         }
+        public System.Data.Entity.DbSet<teamfb.Models.UserAccount> UserAccount { get; set; }
     }
 }

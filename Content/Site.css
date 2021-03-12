@@ -115,7 +115,6 @@ textarea {
     height: 50px;
     font-size: 18px;
     line-height: 60px;
-    background: #3d59ab;
 }
 
 .sidebar-nav > .sidebar-brand a {
@@ -134,16 +133,22 @@ textarea {
     background: #E0E0E0
 }
 
-.navbar-inverse .navbar-nav > li > a {
-    color: black;
-}
 .container {
     margin-right: 20px;
 }
 
-.navbar-fixed-top {
+.bg-primary {
     background: #3d59ab !important;
 }
+
+.nav-item {
+    padding-right: 10px;
+}
+
+.navbar {
+    padding: 13px;
+}
+
 
 @media(min-width:768px) {
     #wrapper {

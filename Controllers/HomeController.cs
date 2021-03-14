@@ -26,5 +26,12 @@ namespace teamfb.Controllers
 
             return View();
         }
+
+        public ActionResult Finances()
+        {
+            ViewBag.Message = "Your finances page.";
+
+            return View();
+        }
     }
 }

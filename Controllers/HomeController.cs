@@ -26,5 +26,12 @@ namespace teamfb.Controllers
 
             return View();
         }
+
+        public ActionResult Documents()
+        {
+            ViewBag.Message = "Your documents page.";
+
+            return View();
+        }
     }
 }

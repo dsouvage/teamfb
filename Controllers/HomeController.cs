@@ -13,6 +13,11 @@ namespace teamfb.Controllers
             return View();
         }
 
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -26,7 +31,12 @@ namespace teamfb.Controllers
 
             return View();
         }
+        public ActionResult Finances()
+        {
+            ViewBag.Message = "Your finances page.";
 
+            return View();
+        }
         public ActionResult Documents()
         {
             ViewBag.Message = "Your documents page.";
@@ -34,4 +44,5 @@ namespace teamfb.Controllers
             return View();
         }
     }
+}
 }

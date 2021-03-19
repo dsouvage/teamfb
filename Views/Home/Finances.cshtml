@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Finances";
+}
+<h2>@ViewBag.Title</h2>
+<div class="py-3">
+    <button type="button" class="btn btn-primary">Add Expense</button>
+</div>
+<!--Place holder example from https://getbootstrap.com/docs/4.0/content/tables/ for example layout-->
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Qty</th>
+            <th scope="col">Date</th>
+            <th scope="col">Type</th>
+            <th scope="col">Description</th>
+            <th scope="col"> Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>8 January, 2021</td>
+            <td>Sale</td>
+            <td>Toothpaste</td>
+            <td>+$25</td>
+        </tr>
+        <tr>
+            <th scope="row">1</th>
+            <td>8 January, 2021</td>
+            <td>Sale</td>
+            <td>Toothpaste</td>
+            <td>+$25</td>
+        </tr>
+        <tr>
+            <th scope="row">1</th>
+            <td>8 January, 2021</td>
+            <td>Sale</td>
+            <td>Toothpaste</td>
+            <td>+$25</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="col-p-3">
+    <div class="form-group form-inline">
+        <label>Generate Report for:</label>
+        <!--Placeholder example of drop down from https://getbootstrap.com/docs/4.0/components/dropdowns/ -->
+        <div class="dropdown px-3">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select Month
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item">January</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary">Create</button>
+    </div>
+</div>

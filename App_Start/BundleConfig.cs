@@ -25,6 +25,9 @@ namespace teamfb
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/Register").Include(
+                       "~/Content/bootstrap.css", 
+                       "~/Content/Login.css"));
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
                       "~/Scripts/Site.js"
                      ));

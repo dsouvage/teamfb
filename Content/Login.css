@@ -51,15 +51,16 @@ body {
     }
 
     .form-signin input[type="email"] {
+        margin-bottom: 5px;
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
     }
 
 #inputRepeatPassword {
     margin-bottom: 20px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
 
 .register {
     background: #ffffff;

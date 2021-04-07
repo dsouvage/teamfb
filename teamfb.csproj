@@ -492,7 +492,8 @@
     <Content Include="Views\Home\Finances.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-	<Content Include="Views\Home\Documents.cshtml" />	  
+	  <Content Include="Views\Home\Documents.cshtml" />	  
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

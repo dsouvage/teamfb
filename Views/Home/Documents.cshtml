@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Documents";
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<!-- Example taken from https://codepen.io/gungorbudak/pen/ooKNpz -->
+<div class="form-group has-search form-inline">
+    <span class="fa fa-search form-control-feedback pr-3"></span>
+    <input type="text" class="form-control" placeholder="Search Documents">
+    <div class="dropdown pl-3">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+            Sort By
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Newest</a>
+            <a class="dropdown-item" href="#">Oldest</a>
+        </div>
+    </div>
+</div>
+
+<!--Image Gallery-->
+<div class="row">   
+        <div class="col-lg-10 col-lg-10 col-lg-10 mb-4 mb-lg-4">
+            <img src="https://user-images.githubusercontent.com/101482/29592647-40da86ca-875a-11e7-8bc3-941700b0a323.png"
+                 class=""
+                 alt="" />
+            <img src="https://user-images.githubusercontent.com/101482/29592647-40da86ca-875a-11e7-8bc3-941700b0a323.png" />
+            <img src="https://user-images.githubusercontent.com/101482/29592647-40da86ca-875a-11e7-8bc3-941700b0a323.png" />
+        </div>
+</div>
+
+

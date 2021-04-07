@@ -41,10 +41,15 @@ namespace teamfb.Controllers
 
             return View();
         }
-
         public ActionResult Finances()
         {
             ViewBag.Message = "Your finances page.";
+
+            return View();
+        }
+        public ActionResult Documents()
+        {
+            ViewBag.Message = "Your documents page.";
 
             return View();
         }

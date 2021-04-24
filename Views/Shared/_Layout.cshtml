@@ -9,62 +9,100 @@
     <script src="https://kit.fontawesome.com/fe267861ed.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<header>
-    <nav class="navbar fixed-top navbar-dark bg-primary navbar-expand-lg box-shadow mb-3">
-        <div class="container">
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li href="#menu-toggle" id="menu-toggle" class="clicky">
-                        <a><i class="fas fa-bars"></i></a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav navbar-right" >
+
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="https://openclipart.org/image/800px/201477" width="30" height="30" class="d-inline-block align-top" alt="">
+            Fireball
+        </a>
+        <!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="#">Sign out</a>
+            </li>
+        </ul>
+    </nav>
+    <div id="wrapper" class="area">
+
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div id="sidebar-wrapper" class="sidebar-sticky">
+                <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a><i class="fas fa-user-cog clicky"></i></a>
+                        <a class="nav-link active" href="@Url.Action("Dashboard", "Home")">
+                            <i class="fas fa-th-large"></i>
+                            <span data-feather="home"></span>
+                            Dashboard <span class="sr-only">(current)</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a><i class="fas fa-question-circle clicky"></i></a>
+                        <a class="nav-link" href="@Url.Action("About", "Home")">
+                            <i class="fas fa-user-friends"></i>
+                             <span data-feather="file"></span>
+                             Clientele
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Finances", "Home")">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span data-feather="shopping-cart"></span>
+                            Finances
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Contact", "Home")">
+                            <i class="fas fa-book"></i>
+                            <span data-feather="users"></span>
+                            Statistics
+</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Contact", "Home")">
+                            <i class="fas fa-box-open"></i>
+                            <span data-feather="bar-chart-2"></span>
+                            Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Contact", "Home")">
+                            <i class="fas fa-dolly"></i>
+                            <span data-feather="layers"></span>
+                            Orders and Fulfillment
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Contact", "Home")">
+                            <i class="fas fa-file-upload"></i>
+                            <span data-feather="layers"></span>
+                            Documents
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Contact", "Home")">
+                            <i class="fas fa-user-tie"></i>
+                            <span data-feather="layers"></span>
+                            Employees
+                        </a>
                     </li>
                 </ul>
             </div>
-        </div>
-    </nav>
-</header>
-<div id="wrapper">
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper" class="navbar-inverse">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand bg-primary">
-                <a href="#">
-                    Fireball
-                </a>
-            </li>
-            <li><a href="@Url.Action("Index", "Home")"><i class="fas fa-th-large"></i>&ensp;&ensp;Dashboard</a></li>
-            <li><a href="@Url.Action("About", "Home")"><i class="fas fa-user-friends"></i>&ensp;&ensp;Clientele</a></li>
-            <li><a href="@Url.Action("Contact", "Home")"><i class="fas fa-dollar-sign"></i>&ensp;&ensp;Finances</a></li>
-            <li><a href="@Url.Action("Contact", "Home")"><i class="fas fa-book"></i>&ensp;&ensp;Statistics</a></li>
-            <li><a href="@Url.Action("Contact", "Home")"><i class="fas fa-box-open"></i>&ensp;&ensp;Products</a></li>
-            <li><a href="@Url.Action("Contact", "Home")"><i class="fas fa-dolly"></i>&ensp;&ensp;Orders and Fulfillment</a></li>
-            <li><a href="@Url.Action("Contact", "Home")"><i class="fas fa-file-upload"></i>&ensp;&ensp;Documents</a></li>
-            <li><a href="@Url.Action("Contact", "Home")"><i class="fas fa-user-tie"></i>&ensp;&ensp;Employees</a></li>
-        </ul>
-    </div>
-    <!-- /#page-content-wrapper -->
-    <div id="page-content-wrapper">
-        <div class="container-fluid">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>
-        
-        </div>
-    </div>
-</div>
+        </nav>
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@Scripts.Render("~/bundles/js")
-@RenderSection("scripts", required: false)
+        <!-- /#page-content-wrapper -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/js")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

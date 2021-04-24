@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>User</h2>
+<h2>User @ViewBag.Name</h2>
 
 <table class="table">
     <tr>
@@ -16,20 +16,27 @@
         </th>
         <th></th>
     </tr>
-
-    @foreach (var item in Model)
+    @if (Model == null)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BusinessAcountID)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.BusinessAcountID }) |
-            </td>
-        </tr>
+        <p>Not signed in</p>
     }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BusinessAcountID)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BusinessAcountID }) |
+                </td>
+            </tr>
+        }
+    }
+
 
 </table>

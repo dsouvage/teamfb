@@ -528,6 +528,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Documents.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\Client.cshtml" />
     <Content Include="Views\UserAccount\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>

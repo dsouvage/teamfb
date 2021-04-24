@@ -68,7 +68,7 @@ namespace teamfb.Controllers
         public ActionResult Logout()
         {
             Session.Clear();
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
         protected override void Dispose(bool disposing)
         {

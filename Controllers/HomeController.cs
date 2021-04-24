@@ -114,12 +114,5 @@ namespace teamfb.Controllers
                 return RedirectToAction("Login", "UserAccount");
             }
         }
-
-        public ActionResult Client()
-        {
-            ViewBag.Message = "Your clientele page.";
-
-            return View();
-        }
     }
 }

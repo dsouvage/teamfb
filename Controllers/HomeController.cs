@@ -53,5 +53,12 @@ namespace teamfb.Controllers
 
             return View();
         }
+
+        public ActionResult Client()
+        {
+            ViewBag.Message = "Your clientele page.";
+
+            return View();
+        }
     }
 }

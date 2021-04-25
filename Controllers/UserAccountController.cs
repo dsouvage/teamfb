@@ -57,6 +57,7 @@ namespace teamfb.Controllers
                 {
                     Session["Password"] = newmodel.Password.ToString();
                     Session["Email"] = newmodel.Email.ToString();
+                    Session["ID"] = UserAccount.BusinessAcountID;
                     return RedirectToAction("Index");
                 }
 

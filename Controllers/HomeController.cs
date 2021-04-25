@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using teamfb.Models;
+using System.Data.Entity;
 
 namespace teamfb.Controllers
 {
@@ -86,21 +88,42 @@ namespace teamfb.Controllers
                 return RedirectToAction("Login", "UserAccount");
             }
         }
-        public ActionResult Finances()
+        public ActionResult Finance()
         {
             ViewBag.Message = "Your finances page.";
 
             if (Session["Email"] != null)
             {
                 ViewBag.Name = Session["Email"];
-                return View();
+                List<Finance> query = db.Finance.SqlQuery("Select * from Finances where BusinessAcountID=@id", new SqlParameter("@id", Session["ID"])).ToList();
+                return View(query);
             }
             else
             {
                 return RedirectToAction("Login", "UserAccount");
             }
         }
-        public ActionResult Documents()
+        [HttpPost]
+        public ActionResult Finance(FinanceModal fm)
+        {
+            string user = (string)Session["Email"];
+            Finance trans = new Finance((int)Session["ID"], user, fm.Quantity, fm.Date, fm.Type, fm.Description, fm.Balance);
+            try
+            {
+                db.Finance.Add(trans);
+                db.SaveChanges();    
+           
+                return RedirectToAction("Finance", "Home");
+
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
+           
+        }
+            public ActionResult Documents()
         {
             ViewBag.Message = "Your documents page.";
 

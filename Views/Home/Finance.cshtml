@@ -1,0 +1,113 @@
+﻿@model IEnumerable<teamfb.Models.Finance>
+
+@{
+    ViewBag.Title = "Finance";
+}
+<h2>@ViewBag.Title</h2>
+
+<div class="py-3">
+    <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal" >Add Expense</button>
+</div>
+
+<!--Place holder example from https://getbootstrap.com/docs/4.0/content/tables/ for example layout-->
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfTransaction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model == null)
+    {
+        <p>Not signed in</p>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfTransaction)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Balance)
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Sale or Expense</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <form class="form-signin" method="post">
+                        <h1 class="h3 mb-3 font-weight-normal">Add Transaction</h1>
+                        <label for="Date" class="sr-only">Date</label>
+                        <input type="date" id="Date" name="Date" class="form-control" placeholder="Date" required="" autofocus="">
+                        <label for="Quantity" class="sr-only">Quantity</label>
+                        <input type="number" name="Quantity" id="Quantity" class="form-control" placeholder="0" required="">
+                        <label for="Type" class="sr-only">Type</label>
+                        <input type="text" id="Type" name="Type" class="form-control" placeholder="Sale" required="" autofocus="">
+                        <label for="Description" class="sr-only">Description</label>
+                        <input type="text" name="Description" id="Description" class="form-control" placeholder="Info here" required="">
+                        <label for="Balance" class="sr-only">Balance</label>
+                        <input type="number" name="Balance" id="Balance" class="form-control" placeholder="0" required="">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-p-3">
+    <div class="form-group form-inline">
+        <label>Generate Report for:</label>
+        <!--Placeholder example of drop down from https://getbootstrap.com/docs/4.0/components/dropdowns/ -->
+        <div class="dropdown px-3">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select Month
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item">January</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary">Create</button>
+    </div>
+</div>

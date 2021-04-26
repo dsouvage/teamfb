@@ -1,11 +1,12 @@
 ﻿@{
-    ViewBag.Title = "Clientele";
+    ViewBag.Title = "Employees";
 }
+
 <h2>@ViewBag.Title</h2>
 
 <div>
     <div class="py-3">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Client</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Employee</button>
     </div>
     <!--Search Bar-->
     <div class="search-container">
@@ -28,27 +29,27 @@
     <tbody>
         <tr>
             <th scope="row">3345</th>
-            <td>Tom Nook</td>
+            <td>Kaley Nook</td>
             <td>N/A</td>
             <td>6</td>
         </tr>
         <tr>
             <th scope="row">7385</th>
-            <td>Rasputin</td>
+            <td>Keenan Rasputin</td>
             <td>N/A</td>
             <td>3</td>
         </tr>
     </tbody>
 </table>
 
-<!--Modal for adding new CLient-->
+<!--Modal for adding new Employee-->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Add Client</h4>
+                <h4 class="modal-title">Add Employee</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -61,4 +62,5 @@
 
     </div>
 </div>
+
 

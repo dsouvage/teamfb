@@ -11,7 +11,7 @@
 <body>
 
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="@Url.Action("Dashboard", "Home")">
             <img src="https://openclipart.org/image/800px/201477" width="30" height="30" class="d-inline-block align-top" alt="">
             Fireball
         </a>
@@ -35,10 +35,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("About", "Home")">
+                        <a class="nav-link" href="@Url.Action("Client", "Home")">
                             <i class="fas fa-user-friends"></i>
-                             <span data-feather="file"></span>
-                             Clientele
+                            <span data-feather="file"></span>
+                            Clientele
                         </a>
                     </li>
                     <li class="nav-item">
@@ -48,22 +48,38 @@
                             Finances
                         </a>
                     </li>
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Statistics", "Home")">
+                            <i class="fas fa-book"></i>
+                            <span data-feather="users"></span>
+                            Statistics
+                        </a>
+                    </li>
+                    -->
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Contact", "Home")">
                             <i class="fas fa-book"></i>
                             <span data-feather="users"></span>
-                            Statistics
-</a>
+                            Contact
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Contact", "Home")">
+                        <a class="nav-link" href="@Url.Action("About", "Home")">
+                            <i class="fas fa-book"></i>
+                            <span data-feather="users"></span>
+                            About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Products", "Home")">
                             <i class="fas fa-box-open"></i>
                             <span data-feather="bar-chart-2"></span>
                             Products
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Contact", "Home")">
+                        <a class="nav-link" href="@Url.Action("Orders", "Home")">
                             <i class="fas fa-dolly"></i>
                             <span data-feather="layers"></span>
                             Orders and Fulfillment
@@ -77,7 +93,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Contact", "Home")">
+                        <a class="nav-link" href="@Url.Action("Employees", "Home")">
                             <i class="fas fa-user-tie"></i>
                             <span data-feather="layers"></span>
                             Employees
@@ -93,7 +109,7 @@
                 @RenderBody()
                 <hr />
                 <footer>
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                    <p>&copy; @DateTime.Now.Year - Team Fireball 2021</p>
                 </footer>
             </div>
         </div>

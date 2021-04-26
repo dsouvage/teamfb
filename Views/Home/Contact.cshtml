@@ -4,14 +4,27 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+
+<!-- Sample HTML Form -->
+<form action="mailto:ds16bz@brocku.ca"
+      method="POST"
+      enctype="multipart/form-data"
+      name="EmailForm">
+    Name:<br>
+    <input type="text" size="19" name="Contact-Name"><br><br>
+    Email:<br>
+    <input type="email" name="Contact-Email"><br><br>
+    Message:<br>
+    <textarea name="Contact-Message" rows="6″ cols=" 20″>
+    </textarea><br><br>
+    <button type="submit" value="Submit">Send Email to Support</button>
+</form>
+<!-- Simple HTML Form that “Triggers” an Email.-->
+
 
 <address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    Brock University<br />
+    St. Catharines, ON<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
 </address>

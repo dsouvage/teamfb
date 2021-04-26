@@ -59,10 +59,24 @@ namespace teamfb.Controllers
             }
         }
 
+
+        public ActionResult Client()
+        {
+            ViewBag.Message = "Your clientele page.";
+
+            if (Session["Email"] != null)
+            {
+                ViewBag.Name = Session["Email"];
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "UserAccount");
+            }
+        }
+
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             if (Session["Email"] != null)
             {
                 ViewBag.Name = Session["Email"];
@@ -76,7 +90,7 @@ namespace teamfb.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Welcome! Feel free to email support if you have any queries.";
 
             if (Session["Email"] != null)
             {
@@ -123,7 +137,68 @@ namespace teamfb.Controllers
             }
            
         }
-            public ActionResult Documents()
+
+        public ActionResult Statistics()
+        {
+            ViewBag.Message = "Your statistics page.";
+
+            if (Session["Email"] != null)
+            {
+                ViewBag.Name = Session["Email"];
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "UserAccount");
+            }
+        }
+
+        public ActionResult Products()
+        {
+            ViewBag.Message = "Your products page.";
+
+            if (Session["Email"] != null)
+            {
+                ViewBag.Name = Session["Email"];
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "UserAccount");
+            }
+        }
+
+        public ActionResult Orders()
+        {
+            ViewBag.Message = "Your Orders page.";
+
+            if (Session["Email"] != null)
+            {
+                ViewBag.Name = Session["Email"];
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "UserAccount");
+            }
+        }
+
+        public ActionResult Employees()
+        {
+            ViewBag.Message = "Your Employees page.";
+
+            if (Session["Email"] != null)
+            {
+                ViewBag.Name = Session["Email"];
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "UserAccount");
+            }
+        }
+
+        public ActionResult Documents()
         {
             ViewBag.Message = "Your documents page.";
 

@@ -372,6 +372,7 @@
       <DependentUpon>202103062125486_CustomName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Orders.cs" />
     <Compile Include="Models\FinanceModal.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MyDatabaseContext.cs" />
@@ -532,6 +533,10 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\UserAccount\Login.cshtml" />
     <Content Include="Views\Home\Client.cshtml" />
+    <Content Include="Views\Home\Statistics.cshtml" />
+    <Content Include="Views\Home\Products.cshtml" />
+    <Content Include="Views\Home\Orders.cshtml" />
+    <Content Include="Views\Home\Employees.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

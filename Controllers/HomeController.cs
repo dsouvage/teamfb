@@ -77,8 +77,6 @@ namespace teamfb.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             if (Session["Email"] != null)
             {
                 ViewBag.Name = Session["Email"];

@@ -11,7 +11,7 @@
 <body>
 
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="@Url.Action("Dashboard", "Home")">
             <img src="https://openclipart.org/image/800px/201477" width="30" height="30" class="d-inline-block align-top" alt="">
             Fireball
         </a>
@@ -63,6 +63,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("About", "Home")">
+                            <i class="fas fa-book"></i>
+                            <span data-feather="users"></span>
+                            About
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Products", "Home")">
                             <i class="fas fa-box-open"></i>
                             <span data-feather="bar-chart-2"></span>
@@ -100,7 +107,7 @@
                 @RenderBody()
                 <hr />
                 <footer>
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                    <p>&copy; @DateTime.Now.Year - Team Fireball 2021</p>
                 </footer>
             </div>
         </div>

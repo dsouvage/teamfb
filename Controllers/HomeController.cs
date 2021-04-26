@@ -112,7 +112,7 @@ namespace teamfb.Controllers
         }
 
 
-        public ActionResult Client()
+        public ActionResult Clients()
         {
             ViewBag.Message = "Your clientele page.";
 

@@ -1,0 +1,49 @@
+﻿.table-fixed tbody {
+    display: block;
+    height: 85vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+    .table-fixed thead, .table-fixed tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#page-content-wrapper {
+    padding: 0px !important;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+}
+
+.table .thead-dark th {
+    background-color: #3d59ab !important;
+}
+
+.fa-bars {
+    color: white !important;
+}
+
+.btn-primary {
+    background-color: #E38948 !important;
+    border-color: #E38948 !important;
+}
+
+.container-fluid {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.table-row {
+    cursor: pointer;
+}

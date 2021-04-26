@@ -31,6 +31,10 @@ namespace teamfb
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
                       "~/Scripts/Site.js"
                      ));
+
+            bundles.Add(new StyleBundle("~/Content/Clients").Include(
+                       "~/Content/bootstrap.css",
+                       "~/Content/Clients.css"));
         }
     }
 }

@@ -31,46 +31,47 @@ namespace teamfb.Controllers
 
                 foreach(var financeitem in query)
                 {
-                    switch ((financeitem.DateOfTransaction.Month))
-                    {
-                        case 1:
-                            salesPerMonth[0] += financeitem.Quantity;
-                            break;
-                        case 2:
-                            salesPerMonth[1] += financeitem.Quantity;
-                            break;
-                        case 3:
-                            salesPerMonth[2] += financeitem.Quantity;
-                            break;
-                        case 4:
-                            salesPerMonth[3] += financeitem.Quantity;
-                            break;
-                        case 5:
-                            salesPerMonth[4] += financeitem.Quantity;
-                            break;
-                        case 6:
-                            salesPerMonth[5] += financeitem.Quantity;
-                            break;
-                        case 7:
-                            salesPerMonth[6] += financeitem.Quantity;
-                            break;
-                        case 8:
-                            salesPerMonth[7] += financeitem.Quantity;
-                            break;
-                        case 9:
-                            salesPerMonth[8] += financeitem.Quantity;
-                            break;
-                        case 10:
-                            salesPerMonth[9] += financeitem.Quantity;
-                            break;
-                        case 11:
-                            salesPerMonth[10] += financeitem.Quantity;
-                            break;
-                        case 12:
-                            salesPerMonth[11] += financeitem.Quantity;
-                            break;
+                    //switch ((financeitem.DateOfTransaction.Month))
+                    //{
+                    //    case 1:
+                    //        salesPerMonth[0] += financeitem.Quantity;
+                    //        break;
+                    //    case 2:
+                    //        salesPerMonth[1] += financeitem.Quantity;
+                    //        break;
+                    //    case 3:
+                    //        salesPerMonth[2] += financeitem.Quantity;
+                    //        break;
+                    //    case 4:
+                    //        salesPerMonth[3] += financeitem.Quantity;
+                    //        break;
+                    //    case 5:
+                    //        salesPerMonth[4] += financeitem.Quantity;
+                    //        break;
+                    //    case 6:
+                    //        salesPerMonth[5] += financeitem.Quantity;
+                    //        break;
+                    //    case 7:
+                    //        salesPerMonth[6] += financeitem.Quantity;
+                    //        break;
+                    //    case 8:
+                    //        salesPerMonth[7] += financeitem.Quantity;
+                    //        break;
+                    //    case 9:
+                    //        salesPerMonth[8] += financeitem.Quantity;
+                    //        break;
+                    //    case 10:
+                    //        salesPerMonth[9] += financeitem.Quantity;
+                    //        break;
+                    //    case 11:
+                    //        salesPerMonth[10] += financeitem.Quantity;
+                    //        break;
+                    //    case 12:
+                    //        salesPerMonth[11] += financeitem.Quantity;
+                    //        break;
 
-                    }
+                    //}
+                    salesPerMonth[financeitem.DateOfTransaction.Month - 1] += financeitem.Quantity;
                 }
 
                 DashboardModel dbm = new DashboardModel();
@@ -112,20 +113,42 @@ namespace teamfb.Controllers
         }
 
 
-        public ActionResult Client()
+        public ActionResult Clients()
         {
             ViewBag.Message = "Your clientele page.";
 
             if (Session["Email"] != null)
             {
-                ViewBag.Name = Session["Email"];
-                return View();
+                List<Clients> query = db.Clients.SqlQuery("Select * from Clients where BusinessAcountID=@id", new SqlParameter("@id", Session["ID"])).ToList();
+                return View(query);
             }
             else
             {
                 return RedirectToAction("Login", "UserAccount");
             }
         }
+
+        [HttpPost]
+        public ActionResult Clients(ClientModal cm)
+        {
+            string user = (string)Session["Email"];
+            Clients trans = new Clients((int)Session["ID"], user, cm.FullName, cm.Date, cm.Phone, cm.Email);
+            try
+            {
+                db.Clients.Add(trans);
+                db.SaveChanges();
+
+                return RedirectToAction("Clients", "Home");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
+
+        }
+
 
         public ActionResult About()
         {

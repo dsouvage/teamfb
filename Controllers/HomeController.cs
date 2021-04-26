@@ -118,8 +118,8 @@ namespace teamfb.Controllers
 
             if (Session["Email"] != null)
             {
-                ViewBag.Name = Session["Email"];
-                return View();
+                List<Client> query = db.Client.SqlQuery("Select * from Clients where BusinessAcountID=@id", new SqlParameter("@id", Session["ID"])).ToList();
+                return View(query);
             }
             else
             {

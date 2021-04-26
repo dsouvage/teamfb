@@ -373,6 +373,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DashboardModel.cs" />
+    <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Orders.cs" />
     <Compile Include="Models\FinanceModal.cs" />
     <Compile Include="Models\LoginModel.cs" />

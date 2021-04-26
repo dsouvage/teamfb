@@ -155,6 +155,51 @@ namespace teamfb.Controllers
             }
         }
 
+        public ActionResult Products()
+        {
+            ViewBag.Message = "Your products page.";
+
+            if (Session["Email"] != null)
+            {
+                ViewBag.Name = Session["Email"];
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "UserAccount");
+            }
+        }
+
+        public ActionResult Orders()
+        {
+            ViewBag.Message = "Your Orders page.";
+
+            if (Session["Email"] != null)
+            {
+                ViewBag.Name = Session["Email"];
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "UserAccount");
+            }
+        }
+
+        public ActionResult Employees()
+        {
+            ViewBag.Message = "Your Employees page.";
+
+            if (Session["Email"] != null)
+            {
+                ViewBag.Name = Session["Email"];
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "UserAccount");
+            }
+        }
+
         public ActionResult Documents()
         {
             ViewBag.Message = "Your documents page.";

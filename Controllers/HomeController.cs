@@ -119,7 +119,7 @@ namespace teamfb.Controllers
 
             if (Session["Email"] != null)
             {
-                List<Client> query = db.Client.SqlQuery("Select * from Clients where BusinessAcountID=@id", new SqlParameter("@id", Session["ID"])).ToList();
+                List<Clients> query = db.Clients.SqlQuery("Select * from Clients where BusinessAcountID=@id", new SqlParameter("@id", Session["ID"])).ToList();
                 return View(query);
             }
             else
@@ -127,6 +127,28 @@ namespace teamfb.Controllers
                 return RedirectToAction("Login", "UserAccount");
             }
         }
+
+        [HttpPost]
+        public ActionResult Clients(ClientModal cm)
+        {
+            string user = (string)Session["Email"];
+            Clients trans = new Clients((int)Session["ID"], user, cm.FullName, cm.Date, cm.Phone, cm.Email);
+            try
+            {
+                db.Clients.Add(trans);
+                db.SaveChanges();
+
+                return RedirectToAction("Clients", "Home");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
+
+        }
+
 
         public ActionResult About()
         {

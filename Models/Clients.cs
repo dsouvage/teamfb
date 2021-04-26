@@ -16,19 +16,18 @@ namespace teamfb.Models
  //   Email varchar(255) NOT NULL,
  //   BusinessAcountID int FOREIGN KEY REFERENCES[dbo].[UserAccounts] (BusinessAcountID)
 
-    public class Client
+    public class Clients
     {
-        public Client(int BusinessAcountID, string UserName, string FullName, DateTime date, string Phone, string desc, string email)
+        public Clients(int BusinessAcountID, string UserName, string FullName, DateTime date, string Phone, string email)
         {
             this.BusinessAcountID = BusinessAcountID;
             this.UserName = UserName;
             this.FullName = FullName;
             this.Email = email;
-            this.Description = desc;
             this.Phone = Phone;
             this.DateOfTransaction = date;
         }
-        public Client()
+        public Clients()
         {
 
         }
@@ -45,8 +44,6 @@ namespace teamfb.Models
         public DateTime DateOfTransaction { get; set; }
         [Required]
         public string Phone { get; set; }
-        [Required]
-        public string Description { get; set; }
         [Required]
         public string Email { get; set; }
 

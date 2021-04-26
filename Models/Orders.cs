@@ -7,9 +7,9 @@ using System.Web;
 
 namespace teamfb.Models
 {
-    public class Order
+    public class Orders
     {
-        public Order(int BusinessAcountID,string UserName, int Quantity, DateTime date, string type, string desc, int bal)
+        public Orders(int BusinessAcountID,string UserName, int Quantity, DateTime date, string type, string desc, int bal)
         {
             this.BusinessAcountID = BusinessAcountID;
             this.UserName = UserName;
@@ -19,7 +19,7 @@ namespace teamfb.Models
             this.ItemType = type;
             this.DateOfTransaction = date;
         }
-        public Order()
+        public Orders()
         {
 
         }

@@ -24,7 +24,59 @@ namespace teamfb.Controllers
             if (Session["Email"] != null)
             {
                 ViewBag.Name = Session["Email"];
-                return View();
+
+                List<Finance> query = db.Finance.SqlQuery("Select * from Finances where BusinessAcountID=@id AND ItemType='Sale'", new SqlParameter("@id", Session["ID"])).ToList();
+
+                int[] salesPerMonth = {0,0,0,0,0,0,0,0,0,0,0,0};
+
+                foreach(var financeitem in query)
+                {
+                    switch ((financeitem.DateOfTransaction.Month))
+                    {
+                        case 1:
+                            salesPerMonth[0] += financeitem.Quantity;
+                            break;
+                        case 2:
+                            salesPerMonth[1] += financeitem.Quantity;
+                            break;
+                        case 3:
+                            salesPerMonth[2] += financeitem.Quantity;
+                            break;
+                        case 4:
+                            salesPerMonth[3] += financeitem.Quantity;
+                            break;
+                        case 5:
+                            salesPerMonth[4] += financeitem.Quantity;
+                            break;
+                        case 6:
+                            salesPerMonth[5] += financeitem.Quantity;
+                            break;
+                        case 7:
+                            salesPerMonth[6] += financeitem.Quantity;
+                            break;
+                        case 8:
+                            salesPerMonth[7] += financeitem.Quantity;
+                            break;
+                        case 9:
+                            salesPerMonth[8] += financeitem.Quantity;
+                            break;
+                        case 10:
+                            salesPerMonth[9] += financeitem.Quantity;
+                            break;
+                        case 11:
+                            salesPerMonth[10] += financeitem.Quantity;
+                            break;
+                        case 12:
+                            salesPerMonth[11] += financeitem.Quantity;
+                            break;
+
+                    }
+                }
+
+                DashboardModel dbm = new DashboardModel();
+                dbm.data.datasets.data = salesPerMonth;
+
+                return View(dbm);
             }
             else
             {

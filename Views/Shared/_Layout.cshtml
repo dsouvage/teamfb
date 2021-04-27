@@ -49,14 +49,35 @@
                         </a>
                     </li>
                     <!--
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Statistics", "Home")">
+            <i class="fas fa-book"></i>
+            <span data-feather="users"></span>
+            Statistics
+        </a>
+    </li>
+    -->
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Statistics", "Home")">
-                            <i class="fas fa-book"></i>
-                            <span data-feather="users"></span>
-                            Statistics
+                        <a class="nav-link" href="@Url.Action("Orders", "Home")">
+                            <i class="fas fa-dolly"></i>
+                            <span data-feather="layers"></span>
+                            Orders and Fulfillment
                         </a>
                     </li>
-                    -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Products", "Home")">
+                            <i class="fas fa-box-open"></i>
+                            <span data-feather="bar-chart-2"></span>
+                            Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Documents", "Home")">
+                            <i class="fas fa-file-upload"></i>
+                            <span data-feather="layers"></span>
+                            Documents
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Contact", "Home")">
                             <i class="fas fa-book"></i>
@@ -71,34 +92,13 @@
                             About
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Products", "Home")">
-                            <i class="fas fa-box-open"></i>
-                            <span data-feather="bar-chart-2"></span>
-                            Products
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Orders", "Home")">
-                            <i class="fas fa-dolly"></i>
-                            <span data-feather="layers"></span>
-                            Orders and Fulfillment
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Documents", "Home")">
-                            <i class="fas fa-file-upload"></i>
-                            <span data-feather="layers"></span>
-                            Documents
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Employees", "Home")">
-                            <i class="fas fa-user-tie"></i>
-                            <span data-feather="layers"></span>
-                            Employees
-                        </a>
-                    </li>
+                    @*<li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Employees", "Home")">
+                <i class="fas fa-user-tie"></i>
+                <span data-feather="layers"></span>
+                Employees
+            </a>
+        </li>*@
                 </ul>
             </div>
         </nav>

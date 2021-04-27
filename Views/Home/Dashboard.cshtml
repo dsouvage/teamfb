@@ -12,40 +12,9 @@
         </div>
     </div>
 </div>
-<div class="row text-center">
-    <div class="col-sm-3">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">@ViewBag.Count</h5>
-            </div>
-            <div class="card-header">
-                <p class="card-text">Total Orders</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">@ViewBag.BestMonth</h5>
-            </div>
-            <div class="card-header">
-                <p class="card-text">Best Month</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">@ViewBag.sumbalance</h5>
-            </div>
-            <div class="card-header">
-                <p class="card-text">Total Balance</p>
-            </div>
-        </div>
-    </div>
-</div>
+
 <div class="row pt-5 text-center">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title text-left">Order Numbers By Month</h5>
@@ -55,8 +24,50 @@
             </div>
         </div>
     </div>
+    <div class="col-sm-2">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.Count</h5>
+            </div>
+            <div class="card-header">
+                <p class="card-text">Total Orders</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.BestMonth</h5>
+            </div>
+            <div class="card-header">
+                <p class="card-text">Best Month</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.sumbalance</h5>
+            </div>
+            <div class="card-header">
+                <p class="card-text">Total Balance</p>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 <div class="row pt-5 text-center">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title text-left">Balance Increase by Month</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="chartjs-2"></canvas>
+            </div>
+        </div>
+    </div>
     <div class="col-sm-3">
         <div class="card">
             <div class="card-body">
@@ -77,16 +88,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title text-left">Balance Increase by Month</h5>
-            </div>
-            <div class="card-body">
-                <canvas id="chartjs-2"></canvas>
-            </div>
-        </div>
-    </div>
+
 </div>
 <script>
     var data = @Html.Raw(JsonConvert.SerializeObject(Model));

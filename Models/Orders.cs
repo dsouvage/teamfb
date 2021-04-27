@@ -9,15 +9,16 @@ namespace teamfb.Models
 {
     public class Orders
     {
-        public Orders(int BusinessAcountID,string UserName, int Quantity, DateTime date, string type, string desc, int bal)
+        public Orders(int BusinessAcountID,string UserName, int Quantity, DateTime date, DateTime dateDue, string type, string desc, string ClientEmail)
         {
             this.BusinessAcountID = BusinessAcountID;
             this.UserName = UserName;
             this.Quantity = Quantity;
-            this.Balance = bal;
             this.Description = desc;
             this.ItemType = type;
             this.DateOfTransaction = date;
+            this.DateOrderDue = dateDue;
+            this.ClientEmail = ClientEmail;
         }
         public Orders()
         {
@@ -35,11 +36,13 @@ namespace teamfb.Models
         [Required]
         public DateTime DateOfTransaction { get; set; }
         [Required]
+        public DateTime DateOrderDue { get; set; }
+        [Required]
         public string ItemType { get; set;}
         [Required]
         public string Description { get; set; }
         [Required]
-        public int Balance { get; set; }
+        public string ClientEmail { get; set; }
 
     }
 }

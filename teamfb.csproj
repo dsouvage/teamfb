@@ -375,6 +375,7 @@
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\Clients.cs" />
     <Compile Include="Models\ClientModal.cs" />
+    <Compile Include="Models\OrderModal.cs" />
     <Compile Include="Models\Orders.cs" />
     <Compile Include="Models\FinanceModal.cs" />
     <Compile Include="Models\LoginModel.cs" />

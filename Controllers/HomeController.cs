@@ -210,12 +210,33 @@ namespace teamfb.Controllers
             if (Session["Email"] != null)
             {
                 ViewBag.Name = Session["Email"];
-                return View();
+                List<Orders> query = db.Orders.SqlQuery("Select * from Orders where BusinessAcountID=@id", new SqlParameter("@id", Session["ID"])).ToList();
+                return View(query);
             }
             else
             {
                 return RedirectToAction("Login", "UserAccount");
             }
+        }
+        [HttpPost]
+        public ActionResult Orders(OrderModal om)
+        {
+            string user = (string)Session["Email"];
+            Orders trans = new Orders((int)Session["ID"], user, om.Quantity, om.DateOfTransaction, om.DateOrderDue, om.ItemType, om.Description, om.ClientEmail);
+            try
+            {
+                db.Orders.Add(trans);
+                db.SaveChanges();
+
+                return RedirectToAction("Orders", "Home");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
+
         }
 
         public ActionResult Employees()

@@ -14,6 +14,8 @@ namespace teamfb.Models
 
         string options = null;
 
+        public int[] balance { get; set; }
+
         public class Data
         {
             public string[] labels = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };

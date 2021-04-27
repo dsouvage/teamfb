@@ -27,11 +27,13 @@ namespace teamfb.Controllers
 
                 List<Finance> query = db.Finance.SqlQuery("Select * from Finances where BusinessAcountID=@id AND ItemType='Sale'", new SqlParameter("@id", Session["ID"])).ToList();
 
-                int[] salesPerMonth = {0,0,0,0,0,0,0,0,0,0,0,0};
+                int[] salesPerMonth = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+                int[] balancePerMonth = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
                 int max = -1;
                 foreach(var financeitem in query)
                 {
                     salesPerMonth[financeitem.DateOfTransaction.Month - 1] += financeitem.Quantity;
+                   
                     if (salesPerMonth[financeitem.DateOfTransaction.Month - 1] > max) 
                     {
                         max = salesPerMonth[financeitem.DateOfTransaction.Month - 1];
@@ -77,7 +79,6 @@ namespace teamfb.Controllers
                         }
                     }
                 }
-
                 
                 DashboardModel dbm = new DashboardModel();
                 dbm.data.datasets.data = salesPerMonth;
@@ -86,6 +87,107 @@ namespace teamfb.Controllers
                 ViewBag.count = query2.Count();
 
                 List<Finance> query3 = db.Finance.SqlQuery("Select * from Finances where BusinessAcountID=@id", new SqlParameter("@id", Session["ID"])).ToList();
+                max = -1;
+                int min = 2100000000;
+                foreach (var financeitem in query3)
+                {
+                    balancePerMonth[financeitem.DateOfTransaction.Month - 1] += financeitem.Balance;
+
+                    if (balancePerMonth[financeitem.DateOfTransaction.Month - 1] > max)
+                    {
+                        max = balancePerMonth[financeitem.DateOfTransaction.Month - 1];
+
+                        switch (financeitem.DateOfTransaction.Month)
+                        {
+                            case 1:
+                                ViewBag.BestMonthBalance = "Jan";
+                                break;
+                            case 2:
+                                ViewBag.BestMonthBalance = "Feb";
+                                break;
+                            case 3:
+                                ViewBag.BestMonthBalance = "Mar";
+                                break;
+                            case 4:
+                                ViewBag.BestMonthBalance = "Apr";
+                                break;
+                            case 5:
+                                ViewBag.BestMonthBalance = "May";
+                                break;
+                            case 6:
+                                ViewBag.BestMonthBalance = "Jun";
+                                break;
+                            case 7:
+                                ViewBag.BestMonthBalance = "Jul";
+                                break;
+                            case 8:
+                                ViewBag.BestMonthBalance = "Aug";
+                                break;
+                            case 9:
+                                ViewBag.BestMonthBalance = "Sep";
+                                break;
+                            case 10:
+                                ViewBag.BestMonthBalance = "Oct";
+                                break;
+                            case 11:
+                                ViewBag.BestMonthBalance = "Nov";
+                                break;
+                            case 12:
+                                ViewBag.BestMonthBalance = "Dec";
+                                break;
+
+                        }
+                    }
+
+                    if (balancePerMonth[financeitem.DateOfTransaction.Month - 1] < min)
+                    {
+                        min = balancePerMonth[financeitem.DateOfTransaction.Month - 1];
+
+                        switch (financeitem.DateOfTransaction.Month)
+                        {
+                            case 1:
+                                ViewBag.WorstMonthBalance = "Jan";
+                                break;
+                            case 2:
+                                ViewBag.WorstMonthBalance = "Feb";
+                                break;
+                            case 3:
+                                ViewBag.WorstMonthBalance = "Mar";
+                                break;
+                            case 4:
+                                ViewBag.WorstMonthBalance = "Apr";
+                                break;
+                            case 5:
+                                ViewBag.WorstMonthBalance = "May";
+                                break;
+                            case 6:
+                                ViewBag.WorstMonthBalance = "Jun";
+                                break;
+                            case 7:
+                                ViewBag.WorstMonthBalance = "Jul";
+                                break;
+                            case 8:
+                                ViewBag.WorstMonthBalance = "Aug";
+                                break;
+                            case 9:
+                                ViewBag.WorstMonthBalance = "Sep";
+                                break;
+                            case 10:
+                                ViewBag.WorstMonthBalance = "Oct";
+                                break;
+                            case 11:
+                                ViewBag.WorstMonthBalance = "Nov";
+                                break;
+                            case 12:
+                                ViewBag.WorstMonthBalance = "Dec";
+                                break;
+
+                        }
+                    }
+
+                }
+
+                dbm.balance = balancePerMonth;
 
                 int summationBalance = 0;
 

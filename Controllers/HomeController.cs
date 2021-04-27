@@ -28,14 +28,62 @@ namespace teamfb.Controllers
                 List<Finance> query = db.Finance.SqlQuery("Select * from Finances where BusinessAcountID=@id AND ItemType='Sale'", new SqlParameter("@id", Session["ID"])).ToList();
 
                 int[] salesPerMonth = {0,0,0,0,0,0,0,0,0,0,0,0};
-
+                int max = -1;
                 foreach(var financeitem in query)
                 {
                     salesPerMonth[financeitem.DateOfTransaction.Month - 1] += financeitem.Quantity;
+                    if (salesPerMonth[financeitem.DateOfTransaction.Month - 1] > max) 
+                    {
+                        max = salesPerMonth[financeitem.DateOfTransaction.Month - 1];
+                        switch (financeitem.DateOfTransaction.Month)
+                        {
+                            case 1:
+                                ViewBag.BestMonth = "Jan";
+                                break;
+                            case 2:
+                                ViewBag.BestMonth = "Feb";
+                                break;
+                            case 3:
+                                ViewBag.BestMonth = "Mar";
+                                break;
+                            case 4:
+                                ViewBag.BestMonth = "Apr";
+                                break;
+                            case 5:
+                                ViewBag.BestMonth = "May";
+                                break;
+                            case 6:
+                                ViewBag.BestMonth = "Jun";
+                                break;
+                            case 7:
+                                ViewBag.BestMonth = "Jul";
+                                break;
+                            case 8:
+                                ViewBag.BestMonth = "Aug";
+                                break;
+                            case 9:
+                                ViewBag.BestMonth = "Sep";
+                                break;
+                            case 10:
+                                ViewBag.BestMonth = "Oct";
+                                break;
+                            case 11:
+                                ViewBag.BestMonth = "Nov";
+                                break;
+                            case 12:
+                                ViewBag.BestMonth = "Dec";
+                                break;
+
+                        }
+                    }
                 }
 
+                
                 DashboardModel dbm = new DashboardModel();
                 dbm.data.datasets.data = salesPerMonth;
+                List<Orders> query2 = db.Orders.SqlQuery("SELECT * FROM [dbo].[Orders] WHERE BusinessAcountID=@id", new SqlParameter("@id", Session["ID"])).ToList();
+
+                ViewBag.count = query2.Count();
 
                 return View(dbm);
             }

@@ -85,6 +85,18 @@ namespace teamfb.Controllers
 
                 ViewBag.count = query2.Count();
 
+                List<Finance> query3 = db.Finance.SqlQuery("Select * from Finances where BusinessAcountID=@id", new SqlParameter("@id", Session["ID"])).ToList();
+
+                int summationBalance = 0;
+
+                foreach (var financeitem in query3)
+                {
+                    summationBalance += financeitem.Balance;
+                }
+
+                ViewBag.sumbalance = "$";
+                ViewBag.sumbalance += summationBalance.ToString();
+
                 return View(dbm);
             }
             else

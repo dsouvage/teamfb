@@ -6,18 +6,20 @@
 <h2>@ViewBag.Title</h2>
 
 <div class="py-3">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Expense</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Order</button>
 </div>
 
 <!--Place holder example from https://getbootstrap.com/docs/4.0/content/tables/ for example layout-->
 <table class="table">
     <tr>
-
+        <th>
+            @Html.DisplayNameFor(model => model.ClientEmail)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.DateOfTransaction)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Quantity)
+            @Html.DisplayNameFor(model => model.DateOrderDue)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ItemType)
@@ -26,7 +28,7 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Balance)
+            @Html.DisplayNameFor(model => model.Quantity)
         </th>
         <th></th>
     </tr>
@@ -39,12 +41,14 @@
         foreach (var item in Model)
         {
             <tr>
-
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientEmail)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DateOfTransaction)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
+                    @Html.DisplayFor(modelItem => item.DateOrderDue)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ItemType)
@@ -53,7 +57,7 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Balance)
+                    @Html.DisplayFor(modelItem => item.Quantity)
                 </td>
             </tr>
         }
@@ -61,12 +65,12 @@
 </table>
 
 
-<!-- Modal -->
+<!-- Modal TODO NEEDS TO BE CREATED -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Sale or Expense</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Order</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -75,17 +79,19 @@
                 <div class="text-center">
                     <form class="form-signin" method="post">
                         <h1 class="h3 mb-3 font-weight-normal">Add Transaction</h1>
+                        <label for="ClientEmail" class="sr-only">Client Email</label>
+                        <input type="text" id="ClientEmail" name="ClientEmail" class="form-control" placeholder="ClientEmail" required="" autofocus="">
                         <label for="Date" class="sr-only">Date</label>
                         <input type="date" id="Date" name="Date" class="form-control" placeholder="Date" required="" autofocus="">
                         <label for="Quantity" class="sr-only">Quantity</label>
                         <input type="number" name="Quantity" id="Quantity" class="form-control" placeholder="0" required="">
-                        <label for="Type" class="sr-only">Type</label>
-                        <input type="text" id="Type" name="Type" class="form-control" placeholder="Sale" required="" autofocus="">
+                        <label for="ItemType" class="sr-only">Type</label>
+                        <input type="text" id="ItemType" name="ItemType" class="form-control" placeholder="Earrings" required="" autofocus="">
                         <label for="Description" class="sr-only">Description</label>
                         <input type="text" name="Description" id="Description" class="form-control" placeholder="Info here" required="">
-                        <label for="Balance" class="sr-only">Balance</label>
-                        <input type="number" name="Balance" id="Balance" class="form-control" placeholder="0" required="">
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                        <label for="DateOrderDue" class="sr-only">Date Order Due</label>
+                        <input type="date" name="DateOrderDue" id="DateOrderDue" class="form-control" required="">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Add Order</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </form>
                 </div>

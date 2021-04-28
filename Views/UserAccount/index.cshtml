@@ -4,15 +4,16 @@
     ViewBag.Title = "Index";
 }
 
+<title>HTML Redirect</title>
+<meta http-equiv="refresh"
+      content="1; url = /Home/Dashboard" />
+
 <h2>User @ViewBag.Name</h2>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BusinessAcountID)
+            Welcome Back!
         </th>
         <th></th>
     </tr>
@@ -20,23 +21,10 @@
     {
         <p>Not signed in</p>
     }
-    else
-    {
-        foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BusinessAcountID)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.BusinessAcountID }) |
-                </td>
-            </tr>
-        }
-    }
+    <p style="text-align:center;">
+        If your browser supports Refresh,
+        you'll be redirected to DashBoard in 2 seconds.
+    </p>
 
 
 </table>

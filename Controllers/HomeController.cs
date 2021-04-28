@@ -27,6 +27,15 @@ namespace teamfb.Controllers
             {
                 ViewBag.Name = Session["Email"];
 
+
+                List<Document> query4 = db.Document.SqlQuery("Select * from Document where BusinessAcountID=@id", new SqlParameter("@id", Session["ID"])).ToList();
+
+                ViewBag.DocumentNumber = query4.Count();
+
+                List<Clients> query5 = db.Clients.SqlQuery("Select * from Clients where BusinessAcountID=@id", new SqlParameter("@id", Session["ID"])).ToList();
+
+                ViewBag.NumClients = query5.Count();
+
                 List<Finance> query = db.Finance.SqlQuery("Select * from Finances where BusinessAcountID=@id AND ItemType='Sale'", new SqlParameter("@id", Session["ID"])).ToList();
 
                 int[] salesPerMonth = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };

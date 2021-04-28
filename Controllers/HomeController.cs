@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using teamfb.Models;
-using System.Data.Entity;
+using System.Threading.Tasks;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+
+
+
 
 namespace teamfb.Controllers
 {
@@ -30,11 +34,11 @@ namespace teamfb.Controllers
                 int[] salesPerMonth = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
                 int[] balancePerMonth = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
                 int max = -1;
-                foreach(var financeitem in query)
+                foreach (var financeitem in query)
                 {
                     salesPerMonth[financeitem.DateOfTransaction.Month - 1] += financeitem.Quantity;
-                   
-                    if (salesPerMonth[financeitem.DateOfTransaction.Month - 1] > max) 
+
+                    if (salesPerMonth[financeitem.DateOfTransaction.Month - 1] > max)
                     {
                         max = salesPerMonth[financeitem.DateOfTransaction.Month - 1];
                         switch (financeitem.DateOfTransaction.Month)
@@ -79,7 +83,7 @@ namespace teamfb.Controllers
                         }
                     }
                 }
-                
+
                 DashboardModel dbm = new DashboardModel();
                 dbm.data.datasets.data = salesPerMonth;
                 List<Orders> query2 = db.Orders.SqlQuery("SELECT * FROM [dbo].[Orders] WHERE BusinessAcountID=@id", new SqlParameter("@id", Session["ID"])).ToList();
@@ -322,17 +326,17 @@ namespace teamfb.Controllers
             try
             {
                 db.Finance.Add(trans);
-                db.SaveChanges();    
-           
+                db.SaveChanges();
+
                 return RedirectToAction("Finance", "Home");
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
                 return RedirectToAction("Index", "Home");
             }
-           
+
         }
 
         public ActionResult Statistics()
@@ -429,6 +433,56 @@ namespace teamfb.Controllers
             {
                 return RedirectToAction("Login", "UserAccount");
             }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Documents(DocumentModal dm)
+        {
+            string user = (string)Session["Email"];
+            
+
+            try
+            {
+                Document doc = new Document();
+                byte[] lol;
+                using (Stream inputStream = dm.Data.InputStream)
+                {
+                    MemoryStream memoryStream = inputStream as MemoryStream;
+                    if (memoryStream == null)
+                    {
+                        memoryStream = new MemoryStream();
+                        inputStream.CopyTo(memoryStream);
+                    }
+                    lol = memoryStream.ToArray();
+                }
+
+                doc.data = lol;
+                doc.BusinessAcountID = (int)Session["ID"];
+                doc.name = dm.Data.FileName;
+                
+                List<Document> query = db.Document.SqlQuery("Select * from Document where BusinessAcountID=@id and name=@name", new SqlParameter("@id", Session["ID"]), new SqlParameter("@name",dm.Data.FileName)).ToList();
+                if (query.Count < 1)
+                {
+                    var val = db.Document.Add(doc);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    db.Document.SqlQuery("Update Document SET data=@data where BusinessAcountID=@id and name=@name", new SqlParameter("@id", Session["ID"]), new SqlParameter("@name", dm.Data.FileName),new SqlParameter("@data",doc.data));
+                    db.SaveChanges();
+                }
+                
+                
+
+                return RedirectToAction("Documents", "Home");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return RedirectToAction("Documents", "Home");
+            }
+
         }
     }
 }

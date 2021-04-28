@@ -22,5 +22,6 @@ namespace teamfb.Models
         public System.Data.Entity.DbSet<teamfb.Models.Finance> Finance { get; set; }
         public System.Data.Entity.DbSet<teamfb.Models.Clients> Clients { get; set; }
         public System.Data.Entity.DbSet<teamfb.Models.Orders> Orders { get; set; }
+        public System.Data.Entity.DbSet<teamfb.Models.Document> Document { get; set; }
     }
 }

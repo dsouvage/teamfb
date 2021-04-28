@@ -1,30 +1,49 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Contact us";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
+<style>
+    input,
+    select {
+        max-width: none;
+    }
 
-<!-- Sample HTML Form -->
-<form action="mailto:ds16bz@brocku.ca"
-      method="POST"
-      enctype="multipart/form-data"
-      name="EmailForm">
-    Name:<br>
-    <input type="text" size="19" name="Contact-Name"><br><br>
-    Email:<br>
-    <input type="email" name="Contact-Email"><br><br>
-    Message:<br>
-    <textarea name="Contact-Message" rows="6″ cols=" 20″>
-    </textarea><br><br>
-    <button type="submit" value="Submit">Send Email to Support</button>
-</form>
-<!-- Simple HTML Form that “Triggers” an Email.-->
+    textarea {
+        max-width: none;
+        height: 150px !important;
+    }
 
+    .btn-primary {
+        background-color: #E38948 !important;
+        border-color: #E38948 !important;
+    }
+</style>
 
-<address>
-    Brock University<br />
-    St. Catharines, ON<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<h2>@ViewBag.Title</h2>
+<br />
+
+<div class="row">
+    <div class="col-md-8">
+        <form action="mailto:ds16bz@brocku.ca"
+              method="POST"
+              enctype="multipart/form-data"
+              name="EmailForm">
+            <input class="form-control" name="name" placeholder="Name" /><br />
+            <input class="form-control" name="phone" placeholder="Phone" /><br />
+            <input class="form-control" name="email" placeholder="E-mail" /><br />
+            <textarea class="form-control" name="text" placeholder="Welcome! Feel free to email support if you have any queries."></textarea><br />
+            <input class="btn btn-primary" type="submit" value="Send Email to Support" /><br /><br />
+        </form>
+    </div>
+    <div class="col-md-4">
+        <b>Contact Info:</b><br />
+        <address>
+            Brock University<br />
+            St. Catharines, ON<br />
+            <abbr title="Phone">Phone:</abbr>
+            425.555.0100<br />
+            <abbr title="Email">E-mail:</abbr>
+            <a href="mailto:ds16bz@brocku.ca">ds16bz@brocku.ca</a>
+        </address>
+    </div>
+</div>

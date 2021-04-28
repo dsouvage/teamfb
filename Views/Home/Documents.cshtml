@@ -6,8 +6,6 @@
 @Styles.Render("~/Content/Clients")
 @Styles.Render("~/Content/css")
 @Scripts.Render("~/bundles/modernizr")
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
 <!-- Example taken from https://codepen.io/gungorbudak/pen/ooKNpz -->
 <div class="form-group has-search form-inline">
@@ -23,7 +21,10 @@
         </div>
     </div>
 </div>
-
+<form class="form-signin" method="post" enctype="multipart/form-data">
+    <input type="file" name="Data" id="fileToUpload">
+    <input type="submit" value="Upload File" name="submit">
+</form>
 <!--Image Gallery-->
 <table class="table table-hover table-fixed">
     <thead class="thead-dark">
@@ -38,34 +39,35 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model == null)
+        @foreach (var item in Model)
         {
-            <p>Not signed in</p>
-        }
-        else
-        {
-            foreach (var item in Model)
-            {
-                <tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                <script>
+                    function download(filename, text) {
+                        var pom = document.createElement('a');
+                        pom.setAttribute('href', 'data:application/octet-stream;charset=utf-8,' + encodeURIComponent(text));
+                        pom.setAttribute('download', filename);
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.name)
-                    </td>
-                    <td>
-                        @using (Html.BeginForm("GetFile", "MyController", FormMethod.Get))
-                        {
-                            @Html.HiddenFor(modelItem => item.BusinessAcountID)
-
-                            <input type="submit" class="btn btn-primary custom" value="Derivate Material" />
+                        if (document.createEvent) {
+                            var event = document.createEvent('MouseEvents');
+                            event.initEvent('click', true, true);
+                            pom.dispatchEvent(event);
                         }
-                    </td>
-                </tr>
-            }
+                        else {
+                            pom.click();
+                        }
+                    }
+                </script>
+                <button onclick="download('@Html.DisplayFor(modelItem => item.name)', '@Html.DisplayFor(modelItem => item.data)' )">Click me</button>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
 
-<form class="form-signin" method="post" enctype="multipart/form-data">
-    <input type="file" name="Data" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
+
+

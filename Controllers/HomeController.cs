@@ -472,8 +472,6 @@ namespace teamfb.Controllers
                     db.SaveChanges();
                 }
                 
-                
-
                 return RedirectToAction("Documents", "Home");
 
             }

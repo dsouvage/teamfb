@@ -7,9 +7,7 @@ using teamfb.Models;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNetCore.Http;
-
-
-
+using System.Net;
 
 namespace teamfb.Controllers
 {
@@ -427,7 +425,8 @@ namespace teamfb.Controllers
             if (Session["Email"] != null)
             {
                 ViewBag.Name = Session["Email"];
-                return View();
+                List<Document> query = db.Document.SqlQuery("Select * from Document where BusinessAcountID=@id", new SqlParameter("@id", Session["ID"])).ToList();
+                return View(query);
             }
             else
             {
@@ -460,10 +459,11 @@ namespace teamfb.Controllers
                 doc.BusinessAcountID = (int)Session["ID"];
                 doc.name = dm.Data.FileName;
                 
-                List<Document> query = db.Document.SqlQuery("Select * from Document where BusinessAcountID=@id and name=@name", new SqlParameter("@id", Session["ID"]), new SqlParameter("@name",dm.Data.FileName)).ToList();
+                List<Document> query = db.Document.SqlQuery("Select * from Document where BusinessAcountID=@id and name=@name", new SqlParameter("@id", Session["ID"]), new SqlParameter("@name",doc.name)).ToList();
                 if (query.Count < 1)
                 {
-                    var val = db.Document.Add(doc);
+                    db.Document.SqlQuery("Insert into Document (name,data,BusinessAcountID) Values (@name,@data,@id)", new SqlParameter("@id", Session["ID"]), new SqlParameter("@name", dm.Data.FileName), new SqlParameter("@data", doc.data)).ToList();
+                    //var val = db.Document.Add(doc);
                     db.SaveChanges();
                 }
                 else
@@ -484,5 +484,7 @@ namespace teamfb.Controllers
             }
 
         }
+
+        
     }
 }

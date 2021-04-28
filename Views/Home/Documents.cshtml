@@ -1,10 +1,11 @@
-﻿@{
+﻿@model IEnumerable<teamfb.Models.Document>
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Documents";
 }
-
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+@Styles.Render("~/Content/Clients")
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
 
 <!-- Example taken from https://codepen.io/gungorbudak/pen/ooKNpz -->
 <div class="form-group has-search form-inline">
@@ -20,16 +21,53 @@
         </div>
     </div>
 </div>
-
+<form class="form-signin" method="post" enctype="multipart/form-data">
+    <input type="file" name="Data" id="fileToUpload">
+    <input type="submit" value="Upload File" name="submit">
+</form>
 <!--Image Gallery-->
-<div class="row">   
-        <div class="col-lg-10 col-lg-10 col-lg-10 mb-4 mb-lg-4">
-            <img src="https://user-images.githubusercontent.com/101482/29592647-40da86ca-875a-11e7-8bc3-941700b0a323.png"
-                 class=""
-                 alt="" />
-            <img src="https://user-images.githubusercontent.com/101482/29592647-40da86ca-875a-11e7-8bc3-941700b0a323.png" />
-            <img src="https://user-images.githubusercontent.com/101482/29592647-40da86ca-875a-11e7-8bc3-941700b0a323.png" />
-        </div>
-</div>
+<table class="table table-hover table-fixed">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                <script>
+                    function download(filename, text) {
+                        var pom = document.createElement('a');
+                        pom.setAttribute('href', 'data:application/octet-stream;charset=utf-8,' + encodeURIComponent(text));
+                        pom.setAttribute('download', filename);
+
+                        if (document.createEvent) {
+                            var event = document.createEvent('MouseEvents');
+                            event.initEvent('click', true, true);
+                            pom.dispatchEvent(event);
+                        }
+                        else {
+                            pom.click();
+                        }
+                    }
+                </script>
+                <button onclick="download('@Html.DisplayFor(modelItem => item.name)', '@Html.DisplayFor(modelItem => item.data)' )">Click me</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
 
 
